@@ -5,7 +5,7 @@
 void print_list(struct node *mynode){
   printf("[");
   while (mynode != NULL){
-    printf("%d", mynode->i);
+    printf("%d ", mynode->i);
     mynode = mynode -> next;
   }
   printf("]");
@@ -29,18 +29,18 @@ struct node * free_list(struct node *mynode){
 }
 
 struct node * remove_node(struct node *front, int data){
-  struct node *prev = NULL;
-  struct node *curr = front;
-  while(front != NULL){
-    if(front->i == data){
-      struct node *holder = curr;
-      if(prev == NULL){
-        front = front->next;} //when front is the first node, front should point to the next node to remove the first one
-      else{
-        prev->next = holder->next;} // the pointer of prev should skip to the following node of deleted one
-      free(front);
-      front = NULL;
+    struct node *curr = front;
+    struct node *prev = NULL;
+    while (curr != NULL) {
+      if(curr->i == data){
+        struct node * holder = curr;
+        if (prev == NULL) front = front->next;
+        else prev->next = holder->next;
+        free(holder);
+        holder = NULL;
       }
+      prev = curr;
+      curr = curr->next;
     }
-  return front;
+    return front;
 }
