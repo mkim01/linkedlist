@@ -15,7 +15,12 @@ int main(){
   int i;
   for(i = 1; i <= 5; i++){
       start = insert_front(start, i);
+      printf("Add %d :", i);
+      print_list(start);
+      printf("\n" );
   }
+
+  printf("\n" );
   printf("printing the list:");
   print_list(start);
   printf("\n");
@@ -27,6 +32,11 @@ int main(){
 
   printf("Removing 2:\n");
   start = remove_node(start, 2);
+  print_list(start);
+  printf("\n");
+
+  printf("Removing -1:\n");
+  start = remove_node(start, -1);
   print_list(start);
   printf("\n");
 
